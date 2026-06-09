@@ -3,7 +3,6 @@ import { load } from 'cheerio';
 import NodeCache from 'node-cache';
 import puppeteer from 'puppeteer';
 import crypto from 'crypto';
-import os from 'os';
 import path from 'path';
 import { promisify } from 'util';
 import { execFile } from 'child_process';
@@ -67,6 +66,8 @@ class MedicineScraperService {
    * Ensure a Puppeteer browser binary is installed before launch.
    */
   async ensurePuppeteerBrowserInstalled() {
+    const cacheDir = process.env.PUPPETEER_CACHE_DIR || path.join(process.cwd(), '.cache', 'puppeteer');
+
     try {
       const executable = puppeteer.executablePath();
       if (executable) {
@@ -76,10 +77,9 @@ class MedicineScraperService {
       console.log(`⚠️ Puppeteer executable not found yet: ${error.message}`);
     }
 
-    console.log('📦 Installing Puppeteer Chrome browser (first-time setup)...');
+    console.log(`📦 Installing Puppeteer Chrome browser (first-time setup) into ${cacheDir}...`);
 
     const cliPath = path.resolve(process.cwd(), 'node_modules', 'puppeteer', 'lib', 'cjs', 'puppeteer', 'node', 'cli.js');
-    const cacheDir = process.env.PUPPETEER_CACHE_DIR || path.join(os.homedir(), '.cache', 'puppeteer');
 
     try {
       await execFileAsync(process.execPath, [cliPath, 'browsers', 'install', 'chrome'], {
