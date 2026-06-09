@@ -17,7 +17,7 @@
     "server"
   ],
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
