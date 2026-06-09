@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ Custom Animations ============ */
+
+/* Slide in animations */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scale animations */
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Fade animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Pulse animations */
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Shimmer animation for loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Button hover glow effect */
+@keyframes button-glow {
+  from {
+    box-shadow: 0 0 8px rgba(22, 163, 74, 0.3);
+  }
+  to {
+    box-shadow: 0 0 16px rgba(22, 163, 74, 0.6);
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Bounce subtle animation */
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation utility classes */
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out;
+}
+
+.animate-slide-in-down {
+  animation: slide-in-down 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-button-glow {
+  animation: button-glow 0.6s ease-in-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 1s ease-in-out infinite;
+}
+
+/* ============ Custom Component Styles ============ */
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Healthcare Button Styles */
+.btn-healthcare {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 ease-out;
+}
+
+.btn-healthcare-primary {
+  @apply bg-healthcare-green-600 hover:bg-healthcare-green-700 text-white shadow-soft hover:shadow-soft-lg hover:scale-105 transform;
+}
+
+.btn-healthcare-secondary {
+  @apply border-2 border-healthcare-green-200 text-healthcare-green-700 hover:bg-healthcare-green-50 dark:border-healthcare-green-700 dark:text-healthcare-green-300 dark:hover:bg-healthcare-green-900/20;
+}
+
+.btn-healthcare-outline {
+  @apply border-2 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700;
+}
+
+/* Healthcare Input Styles */
+.input-healthcare {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-healthcare-green-500 focus:border-transparent transition-all duration-300;
+}
+
+.input-healthcare::placeholder {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+/* Healthcare Card Styles */
+.card-healthcare {
+  @apply bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-soft hover:shadow-soft-lg transition-all duration-300;
+}
+
+.card-healthcare-hover {
+  @apply card-healthcare hover:scale-105 hover:-translate-y-1 cursor-pointer;
+}
+
+/* Healthcare Badge */
+.badge-healthcare {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-healthcare-green {
+  @apply bg-healthcare-green-100 dark:bg-healthcare-green-900/20 text-healthcare-green-700 dark:text-healthcare-green-300;
+}
+
+.badge-healthcare-teal {
+  @apply bg-healthcare-teal-100 dark:bg-healthcare-teal-900/20 text-healthcare-teal-700 dark:text-healthcare-teal-300;
+}
+
+/* Section Divider */
+.section-divider {
+  @apply h-1 w-12 bg-gradient-to-r from-healthcare-green-500 to-healthcare-teal-500 rounded-full;
+}
+
+/* Gradient Text */
+.gradient-text-healthcare {
+  @apply bg-gradient-to-r from-healthcare-green-600 to-healthcare-teal-500 bg-clip-text text-transparent;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-white/20 dark:border-gray-700/20;
+}
+
+/* Positive/Negative/Neutral Status Indicators */
+.status-badge-available {
+  @apply bg-healthcare-emerald-500/10 text-healthcare-emerald-600 dark:text-healthcare-emerald-400;
+}
+
+.status-badge-unavailable {
+  @apply bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400;
+}
+
+.status-badge-warning {
+  @apply bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400;
+}
+
+/* ============ Responsive Typography ============ */
+
+/* Ensure proper heading sizes */
+h1 {
+  @apply text-3xl md:text-5xl lg:text-6xl;
+}
+
+h2 {
+  @apply text-2xl md:text-4xl;
+}
+
+h3 {
+  @apply text-xl md:text-2xl;
+}
+
+/* ============ Scroll Bar Styling ============ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-healthcare-green-500 hover:bg-healthcare-green-600 rounded-full;
+}
+
+/* ============ Selection Styling ============ */
+
+::selection {
+  @apply bg-healthcare-green-500 text-white;
+}
+
+::-moz-selection {
+  @apply bg-healthcare-green-500 text-white;
+}
+
+/* ============ Focus Styles for Accessibility ============ */
+
+:focus-visible {
+  @apply outline-none ring-2 ring-healthcare-green-500 ring-offset-2 dark:ring-offset-gray-900;
+}
+
+/* ============ Utility Classes for Transitions ============ */
+
+.transition-smooth {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.transition-fast {
+  @apply transition-all duration-150 ease-out;
+}
