@@ -121,6 +121,20 @@ app.get('/api/health', (req, res) => {
   res.json({ message: 'Medsy Backend Server is running!', timestamp: new Date() });
 });
 
+// Serve frontend build (single-service deployment)
+const clientBuildPath = path.join(__dirname, '../client/dist');
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+
+  // React Router fallback for non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+      return next();
+    }
+    return res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
+
 // Enhanced server startup with port conflict handling
 const startServer = async () => {
   try {
